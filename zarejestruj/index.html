@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ZSE LEAGUE</title>
+        <link rel="icon" href="../IMG/logo.png">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar sticky">
+            <div class="content">
+                <div class="logo">
+                    <a href="../">ZSE LEAGUE</a>
+                </div>
+                <ul class="menu-list">
+                    <div class="icon cancel-btn">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <li><a class="menu-item" href="../">Strona Główna</a></li>
+                    <li><a class="menu-item" href="../wyniki">Wyniki</a></li>
+                    <li><a  class="menu-item" href="../druzyny">Drużyny</a></li>
+                    <li><a class="menu-item" href="../o_nas">O nas</a></li>
+                    <li><a class="menu-item" href="../faq">FAQ</a></li>
+                    <li><a class="menu-item" href="../kontakt">Kontakt</a></li>
+                    <li><a class="menu-item" href="../../">ZSE CUP</a></li>
+                    <li><button class="register"><a  href="#">Zarejestruj</a></button></li>
+                </ul>
+                <div class="icon menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+
+         <!-- Ekran ładowania -->
+        <div class="loading">
+            <div class="lds-ring"><div></div><div></div></div>
+        </div>
+
+        <div class="banner">
+            <h1>Rejestracja</h1>
+        </div>
+        <div class="about">
+            <form class="flp" id="registerForm" name="register" onsubmit = "event.preventDefault(); myValidation();">
+                <!--Dane druzyny-->
+                <div class="title color">Dane drużyny:</div>
+                <div>
+                    <input class="input" type="text" id="nazwa_druz" maxlength="12" name="nazwa_druz" required>
+                    <label class="label" for="nazwa_druz">Nazwa drużyny:</label>
+                </div>
+                <div>
+                    <input class="input" type="text" id="skrot_druz" maxlength="4" name="skrot_druz" required>
+                    <label class="label" for="skrot_druz">Skrót drużyny:</label>
+                </div>
+                <div>
+                    <input class="input" type="text" id="nazwa_szkoly" name="nazwa_szkoly" required>
+                    <label class="label" for="nazwa_szkoly">Nazwa szkoły:</label>
+                </div>
+
+                <p class="red-text" id="team-name">Wprowadź poprawnie nazwę drużyny!</p>
+                <p class="red-text" id="team-tag">Wprowadź poprawnie TAG!</p>
+                <p class="red-text" id="school-name">Wprowadź poprawnie nazwę szkoły!</p>
+
+                <!--Kapitan-->
+                <div class="game">
+                    <div class="title color">Dane Kapitana:</div>
+                    <div>
+                        <input class="input" type="text" id="kname"  name="kname" required>
+                        <label class="label" for="kname">Imie:</label>
+                    </div>
+                    <div>
+                        <input class="input" type="text" id="ksurname"  name="ksurname" required>
+                        <label class="label" for="ksurname">Nazwisko:</label>
+                    </div>
+                    <div>
+                        <input class="input" type="text" id="kpseudo"  name="kpseudo" required>
+                        <label class="label" for="kpseudo">Pseudonim z gry:</label>
+                    </div>
+                    <div>
+                        <input class="input" type="email" id="kemail" name="kemail" required>
+                        <label class="label" for="kemail">Email:</label>
+                    </div>
+                </div>
+                <p class="red-text" id="captain-name">Wprowadź poprawnie imie!</p>
+                <p class="red-text" id="captain-surname">Wprowadź poprawnie nazwisko!</p>
+                <p class="red-text" id="captain-nick">Wprowadź poprawnie pseudonim!</p>
+                <p class="red-text" id="captain-email">Wprowadź poprawnie email!</p>
+                
+                <!--Drugi gracz-->
+                <div class="game">
+                    <div class="title color">Dane drugiego gracza:</div>
+                    <div>
+                        <input class="input" type="text" id="druginame" name="druginame" required>
+                        <label class="label" for="druginame">Imie:</label>
+                    </div>
+                    <div>
+                        <input class="input" type="text" id="drugisurname" name="drugisurname" required>
+                        <label class="label" for="drugisurname">Nazwisko:</label>
+                    </div>
+                    <div>
+                        <input class="input" type="text" id="drugipseudo" name="drugipseudo" required>
+                        <label class="label" for="drugipseudo">Pseudonim z gry:</label>
+                    </div>
+                    <div>
+                        <input class="input" type="email" id="drugiemail" name="drugiemail" required>
+                        <label class="label" for="drugiemail">Email:</label>
+                    </div>
+                </div>
+
+                <p class="red-text" id="second-name">Wprowadź poprawnie imie!</p>
+                <p class="red-text" id="second-surname">Wprowadź poprawnie nazwisko!</p>
+                <p class="red-text" id="second-nick">Wprowadź poprawnie pseudonim!</p>
+                <p class="red-text" id="second-email">Wprowadź poprawnie email!</p>
+
+                <!--Trzeci gracz-->
+                <div class="game">
+                    <div class="title color">Dane trzeciego gracza:</div>
+                    <div>
+                        <input class="input" type="text" id="trzeciname" name="trzeciname" required>
+                        <label class="label" for="trzeciname">Imie:</label>
+                    </div>
+                    <div>
+                        <input class="input" type="text" id="trzecisurname" name="trzecisurname" required>
+                        <label class="label" for="trzecisurname">Nazwisko:</label>
+                    </div>
+                    <div>
+                        <input class="input" type="text" id="trzecipseudo" name="trzecipseudo" required>
+                        <label class="label" for="trzecipseudo">Pseudonim z gry:</label>
+                    </div>
+                    <div>
+                        <input class="input" type="email" id="trzeciemail" name="trzeciemail" required>
+                        <label class="label" for="trzeciemail">Email:</label>
+                    </div>
+                </div>
+                
+
+
+                <p class="red-text" id="third-name">Wprowadź poprawnie imie!</p>
+                <p class="red-text" id="third-surname">Wprowadź poprawnie nazwisko!</p>
+                <p class="red-text" id="third-nick">Wprowadź poprawnie pseudonim!</p>
+                <p class="red-text" id="third-email">Wprowadź poprawnie email!</p>
+
+                <!--Czwarty gracz-->
+                    <div class="game">
+                        <div class="title color">Dane czwartego gracza:</div>
+                        <div>
+                            <input class="input" type="text" id="czwartyname" name="czwartyname" required>
+                            <label class="label" for="czwartyname">Imie:</label>
+                        </div>
+                        <div>
+                            <input class="input" type="text" id="czwartysurname" name="czwartysurname" required>
+                            <label class="label" for="czwartysurname">Nazwisko:</label>
+                        </div>
+                        <div>
+                            <input class="input" type="text" id="czwartypseudo" name="czwartypseudo" required>
+                            <label class="label" for="czwartypseudo">Pseudonim z gry:</label>
+                        </div>
+                        <div>
+                            <input class="input" type="email" id="czwartyemail" name="czwartyemail" required>
+                            <label class="label" for="czwartyemail">Email:</label>
+                        </div>
+                    </div>
+
+
+
+                <p class="red-text" id="fourth-name">Wprowadź poprawnie imie!</p>
+                <p class="red-text" id="fourth-surname">Wprowadź poprawnie nazwisko!</p>
+                <p class="red-text" id="fourth-nick">Wprowadź poprawnie pseudonim!</p>
+                <p class="red-text" id="fourth-email">Wprowadź poprawnie email!</p>
+
+                <!--Piąty Gracz-->
+                <div class="game">
+                    <div class="title color">Dane piątego gracza:</div>
+                    <div>
+                        <input class="input" type="text" id="piatyname" name="piatyname">
+                        <label class="label" for="piatyname">Imie:</label>
+                    </div>
+                    <div>
+                        <input class="input" type="text" id="piatysurname" name="piatysurname">
+                        <label class="label" for="piatysurname">Nazwisko:</label>
+                    </div>
+                    <div>
+                        <input class="input" type="text" id="piatypseudo" name="piatypseudo">
+                        <label class="label" for="piatypseudo">Pseudonim z gry:</label>
+                    </div>
+                    <div>
+                        <input class="input" type="email" id="piatyemail" name="piatyemail">
+                        <label class="label" for="piatyemail">Email:</label>
+                    </div>
+                </div>
+                
+
+            <p class="red-text" id="fifth-name">Wprowadź poprawnie imie!</p>
+            <p class="red-text" id="fifth-surname">Wprowadź poprawnie nazwisko!</p>
+            <p class="red-text" id="fifth-nick">Wprowadź poprawnie pseudonim!</p>
+            <p class="red-text" id="fifth-email">Wprowadź poprawnie email!</p>
+
+
+                <!--Szósty Gracz-->
+                    <div class="game">
+                        <div class="title color">Dane rezerwowego gracza:</div>
+                        <div>
+                            <input class="input" type="text" id="szostyname" name="szostyname">
+                            <label class="label" for="szostyname">Imie:</label>
+                        </div>
+                        <div>
+                            <input class="input" type="text" id="szostysurname" name="szostysurname">
+                            <label class="label" for="szostysurname">Nazwisko:</label>
+                        </div>
+                        <div>
+                            <input class="input" type="text" id="szostypseudo" name="szostypseudo">
+                            <label class="label" for="szostypseudo">Pseudonim z gry:</label>
+                        </div>
+                        <div>
+                            <input class="input" type="email" id="szostyemail" name="szostyemail">
+                            <label class="label" for="szostyemail">Email:</label>
+                        </div>
+                    </div>
+                    
+
+                <p class="red-text" id="sixth-name">Wprowadź poprawnie imie!</p>
+                <p class="red-text" id="sixth-surname">Wprowadź poprawnie nazwisko!</p>
+                <p class="red-text" id="sixth-nick">Wprowadź poprawnie pseudonim!</p>
+                <p class="red-text" id="sixth-email">Wprowadź poprawnie email!</p>
+
+                <div class="game">
+                    <p><input id="checkRules" type="checkbox" required>&nbsp; &nbsp; Akceptuję <a class="color" href="regulamin.pdf" target="_blank">regulamin turnieju</a></p>
+                    <p class="red-text" id="check-rules">Musisz zaakceptować regulamin!</p>
+                </div>
+
+                
+
+                <div id="btn_srodek">
+                    <button id="submit" class="btn_wyslij">Wyślij</button>
+                </div>
+            </form>
+        </div>
+        <footer>
+            <p>
+                Copyright &copy; 2022 <br>
+                <a id="ft_od" href="https://esportwzse.pl/zseleague">ZSE LEAGUE</a><br>
+                Created by: <a class="author" href="https://www.facebook.com/DuolyStudio" target="_blank">Duoly</a><br>
+                <a href="https://www.youtube.com/channel/UCZF9sZ6Er_L9zOJuqQCHv-g" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/ZSELEAGUE" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </p>
+        </footer>
+
+        <style>
+        
+        #team-name, #team-tag, #school-name,
+        #captain-name, #captain-surname, #captain-nick, #captain-email,
+        #second-name, #second-surname, #second-nick, #second-email,
+        #third-name, #third-surname, #third-nick, #third-email,
+        #fourth-name, #fourth-surname, #fourth-nick, #fourth-email,
+        #fifth-name, #fifth-surname, #fifth-nick, #fifth-email, 
+        #sixth-name, #sixth-surname, #sixth-nick, #sixth-email, #check-rules{
+            display: none;
+        }
+        </style>
+
+        <script>
+            //ogolne
+            $("#team-name").hide();
+            $("#team-tag").hide();
+            $("#school-name").hide();
+            
+            //kapitan
+            $("#captain-name").hide();
+            $("#captain-surname").hide();
+            $("#captain-nick").hide();
+            $("#captain-email").hide();
+            //drugi gracz
+            $("#second-name").hide();
+            $("#second-surname").hide();
+            $("#second-nick").hide();
+            $("#second-email").hide();
+
+            //trzeci gracz
+            $("#third-name").hide();
+            $("#third-surname").hide();
+            $("#third-nick").hide();
+            $("#third-email").hide();
+
+            //czwarty gracz
+            $("#fourth-name").hide();
+            $("#fourth-surname").hide();
+            $("#fourth-nick").hide();
+            $("#fourth-email").hide();
+            
+            //piąty gracz
+            $("#fifth-name").hide();
+            $("#fifth-surname").hide();
+            $("#fifth-nick").hide();
+            $("#fifth-email").hide();
+
+            //szósty gracz
+            $("#sixth-name").hide();
+            $("#sixth-surname").hide();
+            $("#sixth-nick").hide();
+            $("#sixth-email").hide();
+
+
+            //gra
+            $("#nazwa_druz").focusout(function(){
+                if(check_team_name( $("#nazwa_druz").val() )){
+                    $("#team-name").hide();
+                }
+                else{
+                    $("#team-name").show();
+                }
+            });
+
+            $("#skrot_druz").focusout(function(){
+                if(check_team_tag( $("#skrot_druz").val() )){
+                    $("#team-tag").hide();
+                }
+                else{
+                    $("#team-tag").show();
+                }
+            });
+
+            $("#nazwa_szkoly").focusout(function(){
+                if(check_school_name( $("#nazwa_szkoly").val() )){
+                    $("#school-name").hide();
+                }
+                else{
+                    $("#school-name").show();
+                }
+            });
+
+            //walidacja kapitan
+            $("#kname").focusout(function(){
+                if(check_name( $("#kname").val() )){
+                    $("#captain-name").hide();
+                }
+                else{
+                    $("#captain-name").show();
+                }
+            });
+
+            $("#ksurname").focusout(function(){
+                if(check_name( $("#ksurname").val() )){
+                    $("#captain-surname").hide();
+                }
+                else{
+                    $("#captain-surname").show();
+                }
+            });
+
+            $("#kpseudo").focusout(function(){
+                if(check_nick( $("#kpseudo").val() )){
+                    $("#captain-nick").hide();
+                }
+                else{
+                    $("#captain-nick").show();
+                }
+            });
+
+            $("#kemail").focusout(function(){
+                if(check_email( $("#kemail").val() )){
+                    $("#captain-email").hide();
+                }
+                else{
+                    $("#captain-email").show();
+                }
+            });
+
+            //walidacja drugi gracz
+            $("#druginame").focusout(function(){
+                if(check_name( $("#druginame").val() )){
+                    $("#second-name").hide();
+                }
+                else{
+                    $("#second-name").show();
+                }
+            });
+
+            $("#drugisurname").focusout(function(){
+                if(check_name( $("#drugisurname").val() )){
+                    $("#second-surname").hide();
+                }
+                else{
+                    $("#second-surname").show();
+                }
+            });
+
+            $("#drugipseudo").focusout(function(){
+                if(check_nick( $("#drugipseudo").val() )){
+                    $("#second-nick").hide();
+                }
+                else{
+                    $("#second-nick").show();
+                }
+            });
+
+            $("#drugiemail").focusout(function(){
+                if(check_email( $("#drugiemail").val() )){
+                    $("#second-email").hide();
+                }
+                else{
+                    $("#second-email").show();
+                }
+            });
+
+            //walidacja trzeci gracz
+            $("#trzeciname").focusout(function(){
+                if(check_name( $("#trzeciname").val() )){
+                    $("#third-name").hide();
+                }
+                else{
+                    $("#third-name").show();
+                }
+            });
+
+            $("#trzecisurname").focusout(function(){
+                if(check_name( $("#trzecisurname").val() )){
+                    $("#third-surname").hide();
+                }
+                else{
+                    $("#third-surname").show();
+                }
+            });
+
+            $("#trzecipseudo").focusout(function(){
+                if(check_nick( $("#trzecipseudo").val() )){
+                    $("#third-nick").hide();
+                }
+                else{
+                    $("#third-nick").show();
+                }
+            });
+
+            $("#trzeciemail").focusout(function(){
+                if(check_email( $("#trzeciemail").val() )){
+                    $("#third-email").hide();
+                }
+                else{
+                    $("#third-email").show();
+                }
+            });
+            
+            //walidacja czwarty gracz
+            $("#czwartyname").focusout(function(){
+                if(check_name( $("#czwartyname").val() )){
+                    $("#fourth-name").hide();
+                }
+                else{
+                    $("#fourth-name").show();
+                }
+            });
+
+            $("#czwartysurname").focusout(function(){
+                if(check_name( $("#czwartysurname").val() )){
+                    $("#fourth-surname").hide();
+                }
+                else{
+                    $("#fourth-surname").show();
+                }
+            });
+
+            $("#czwartypseudo").focusout(function(){
+                if(check_nick( $("#czwartypseudo").val() )){
+                    $("#fourth-nick").hide();
+                }
+                else{
+                    $("#fourth-nick").show();
+                }
+            });
+
+            $("#czwartyemail").focusout(function(){
+                if(check_email( $("#czwartyemail").val() )){
+                    $("#fourth-email").hide();
+                }
+                else{
+                    $("#fourth-email").show();
+                }
+            });
+
+            //walidacja piąty gracz
+            $("#piatyname").focusout(function(){
+                if(check_name( $("#piatyname").val() )){
+                    $("#fifth-name").hide();
+                }
+                else{
+                    $("#fifth-name").show();
+                }
+            });
+
+            $("#piatysurname").focusout(function(){
+                if(check_name( $("#piatysurname").val() )){
+                    $("#fifth-surname").hide();
+                }
+                else{
+                    $("#fifth-surname").show();
+                }
+            });
+
+            $("#piatypseudo").focusout(function(){
+                if(check_nick( $("#piatypseudo").val() )){
+                    $("#fifth-nick").hide();
+                }
+                else{
+                    $("#fifth-nick").show();
+                }
+            });
+
+            $("#piatyemail").focusout(function(){
+                if(check_email( $("#piatyemail").val() )){
+                    $("#fifth-email").hide();
+                }
+                else{
+                    $("#fifth-email").show();
+                }
+            });
+
+            //walidacja szósty gracz
+            $("#szostyname").focusout(function(){
+                if(check_name( $("#szostyname").val() )){
+                    $("#sixth-name").hide();
+                }
+                else{
+                    $("#sixth-name").show();
+                }
+            });
+
+            $("#szostysurname").focusout(function(){
+                if(check_name( $("#szostysurname").val() )){
+                    $("#sixth-surname").hide();
+                }
+                else{
+                    $("#sixth-surname").show();
+                }
+            });
+
+            $("#szostypseudo").focusout(function(){
+                if(check_nick( $("#szostypseudo").val() )){
+                    $("#sixth-nick").hide();
+                }
+                else{
+                    $("#sixth-nick").show();
+                }
+            });
+
+            $("#szostyemail").focusout(function(){
+                if(check_email( $("#szostyemail").val() )){
+                    $("#sixth-email").hide();
+                }
+                else{
+                    $("#sixth-email").show();
+                }
+            });
+
+            //funkcje do sprawdzania
+            function check_name(name){
+                var pattern = /^[a-zA-Z-ĄąĆćĘęŁłŃńÓóŚśŹźŻż ]*$/;
+                if(pattern.test(name) && name !== ''  && name !== ' ')
+                {
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+
+            function check_nick(nick){
+                var pattern = /^[0-9a-zA-Z-ĄąĆćĘęŁłŃńÓóŚśŹźŻż_!@#$&?]*$/;
+                if(pattern.test(nick) && nick !== ''  && nick !== ' ')
+                {
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+
+            
+            function check_email(email){
+                var pattern = new RegExp('[A-Za-z0-9_-]+@[A-Za-z0-9_-]+\.[A-Za-z0-9_-]{2,3}');
+                ///^([a-z0-9]+@[a-z]+\.[a-z])$/;
+                if(pattern.test(email) && email !== '' && email !== ' ' )
+                {
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+            
+            function check_team_name(teamName){
+                var pattern = /^[0-9a-zA-Z]+[\w\s]*$/;
+                if(pattern.test(teamName) && teamName !== '' && teamName !== ' ')
+                {
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+
+            function check_school_name(name){
+                var pattern = /^[ 0-9a-zA-Z-ĄąĆćĘęŁłŃńÓóŚśŹźŻż_.-]*$/;
+                if(pattern.test(name) && name !== '' && name !== ' ')
+                {
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+
+            function check_team_tag(teamTag){
+                var pattern = /^[0-9a-zA-Z_!@#$&?-]*$/;
+                if(pattern.test(teamTag) && teamTag !== '' && teamTag.length <= 4 && teamTag !== ' ')
+                {
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+
+            function myValidation(){
+                    $('.loading').show();
+
+
+                    var school_name = check_school_name($("#nazwa_szkoly").val());
+                    var name_team = check_team_name($("#nazwa_druz").val());
+                    var tag_team = check_team_tag($("#skrot_druz").val());
+
+                    var captain_name = check_name( $("#kname").val() );
+                    var captain_surname = check_name( $("#ksurname").val() ); 
+                    var captain_nick = check_nick($("#kpseudo").val());
+                    var captain_email = check_email($("#kemail").val());
+
+                    var second_name = check_name($("#druginame").val());
+                    var second_surname = check_name($("#drugisurname").val());
+                    var second_nick = check_nick($("#drugipseudo").val());
+                    var second_email = check_email($("#drugiemail").val());
+
+                    var third_name = check_name($("#trzeciname").val());
+                    var third_surname = check_name($("#trzecisurname").val());
+                    var third_nick = check_nick($("#trzecipseudo").val());
+                    var third_email = check_email($("#trzeciemail").val());
+
+                    var fourth_name = check_name($("#czwartyname").val());
+                    var fourth_surname = check_name($("#czwartysurname").val());
+                    var fourth_nick = check_nick($("#czwartypseudo").val());
+                    var fourth_email = check_email($("#czwartyemail").val());
+
+                    var fifth_name = check_name($("#piatyname").val());
+                    var fifth_surname = check_name($("#piatysurname").val());
+                    var fifth_nick = check_nick($("#piatypseudo").val());
+                    var fifth_email = check_email($("#piatyemail").val());
+
+                    var sixth_name = check_name($("#szostyname").val());
+                    var sixth_surname = check_name($("#szostysurname").val());
+                    var sixth_nick = check_nick($("#szostypseudo").val());
+                    var sixth_email = check_email($("#szostyemail").val());
+
+                    //spr czy jest rezerwa
+                    var szosty = 3;
+                    if($("#szostyname").val() == '' && $("#szostysurname").val() == '' && $("#szostypseudo").val() == ''
+                    && $("#szostyemail").val() == ''){
+                        szosty = 0;
+                    }
+                    else if(sixth_name && sixth_surname && sixth_nick && sixth_email){
+                        szosty = 2;
+                    }
+                    else{
+                        szosty = 1;
+                    }
+
+                    //sprawdzanie czy mozna wyslac dane
+                if(tag_team && school_name &&  name_team){
+                    if(captain_name && captain_surname && captain_nick && captain_email){
+                        if(second_name && second_surname && second_nick && second_email){
+                            if(third_name && third_surname && third_nick && third_email){
+                                if(fourth_name && fourth_surname && fourth_nick && fourth_email){
+                                    if(fifth_name && fifth_surname && fifth_nick && fifth_email){
+                                        if(szosty == 0){
+                                            $.ajax({
+                                                url: 'send.php',
+                                                type: 'post',
+                                                data: {
+                                                    nameSchool: $("#nazwa_szkoly").val(),
+                                                    teamName: $("#nazwa_druz").val(),
+                                                    teamTag: $("#skrot_druz").val(),
+
+                                                    captain_name: $("#kname").val(),
+                                                    captain_surname: $("#ksurname").val(),
+                                                    captain_email: $("#kemail").val(),
+                                                    captain_nick: $("#kpseudo").val(),
+
+                                                    second_name: $("#druginame").val(),
+                                                    second_surname: $("#drugisurname").val(),
+                                                    second_email: $("#drugiemail").val(),
+                                                    second_nick: $("#drugipseudo").val(),
+
+                                                    third_name: $("#trzeciname").val(),
+                                                    third_surname: $("#trzecisurname").val(),
+                                                    third_email: $("#trzeciemail").val(),
+                                                    third_nick: $("#trzecipseudo").val(),
+
+                                                    fourth_name: $("#czwartyname").val(),
+                                                    fourth_surname: $("#czwartysurname").val(),
+                                                    fourth_email: $("#czwartyemail").val(),
+                                                    fourth_nick: $("#czwartypseudo").val(),
+
+                                                    fifth_name: $("#piatyname").val(),
+                                                    fifth_surname: $("#piatysurname").val(),
+                                                    fifth_email: $("#piatyemail").val(),
+                                                    fifth_nick: $("#piatypseudo").val(),
+
+                                                    sixth: szosty
+                                                },
+                                                success: function(response){
+                                                    $('.loading').hide();
+                                                    if(response == "not"){
+                                                        alert("Taka drużyna już istnieje!");
+                                                    }
+                                                    else{
+                                                        alert("Dziękujemy za rejestrację! Jeśli zaproszenie nie dotrze skontaktuj się z nami przez facebook'a!");
+                                                        location.replace( "../");
+                                                    }
+                                                }
+                                            });
+                                            return true;
+                                        }
+                                        else if(szosty == 2){
+                                            if(fifth_name && fifth_surname && fifth_nick && fifth_email)
+                                            $.ajax({
+                                                url: 'send.php',
+                                                type: 'post',
+                                                data: {
+                                                    nameSchool: $("#nazwa_szkoly").val(),
+                                                    teamName: $("#nazwa_druz").val(),
+                                                    teamTag: $("#skrot_druz").val(),
+
+                                                    captain_name: $("#kname").val(),
+                                                    captain_surname: $("#ksurname").val(),
+                                                    captain_email: $("#kemail").val(),
+                                                    captain_nick: $("#kpseudo").val(),
+
+                                                    second_name: $("#druginame").val(),
+                                                    second_surname: $("#drugisurname").val(),
+                                                    second_email: $("#drugiemail").val(),
+                                                    second_nick: $("#drugipseudo").val(),
+
+                                                    third_name: $("#trzeciname").val(),
+                                                    third_surname: $("#trzecisurname").val(),
+                                                    third_email: $("#trzeciemail").val(),
+                                                    third_nick: $("#trzecipseudo").val(),
+
+                                                    fourth_name: $("#czwartyname").val(),
+                                                    fourth_surname: $("#czwartysurname").val(),
+                                                    fourth_email: $("#czwartyemail").val(),
+                                                    fourth_nick: $("#czwartypseudo").val(),
+
+                                                    fifth_name: $("#piatyname").val(),
+                                                    fifth_surname: $("#piatysurname").val(),
+                                                    fifth_email: $("#piatyemail").val(),
+                                                    fifth_nick: $("#piatypseudo").val(),
+
+                                                    sixth_name: $("#szostyname").val(),
+                                                    sixth_surname: $("#szostysurname").val(),
+                                                    sixth_email: $("#szostyemail").val(),
+                                                    sixth_nick: $("#szostypseudo").val(),
+
+                                                    sixth: szosty
+                                                },
+                                                success: function(response){
+                                                    $('.loading').hide();
+                                                    if(response == "not"){
+                                                        alert("Taka drużyna już istnieje!");
+                                                    }
+                                                    else{
+                                                        alert("Dziękujemy za rejestrację! Jeśli zaproszenie nie dotrze skontaktuj się z nami przez facebook'a!");
+                                                        location.replace( "../");
+                                                    }
+                                                }
+                                            });
+                                            return true;
+                                            }
+                                        else{
+                                            $('.loading').hide();
+                                            alert("Coś poszło nie tak! Spróbuj ponownie!");
+                                            return false;
+                                        }
+                                        
+                                    }
+                                    else{
+                                        return false;
+                                    }
+                                }
+                                else{
+                                    return false;
+                                }
+                            }
+                            else{
+                                return false;
+                            }
+                        }
+                        else{
+                            return false;
+                        }
+                    }
+                    else{
+                        return false;
+                    }
+                }
+                else{
+                    return false;
+                }
+            }
+
+            
+            
+
+    </script>
+
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script><script  src="script.js"></script>
+    
+    </body>
+</html>
